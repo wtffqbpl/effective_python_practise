@@ -72,13 +72,16 @@ class DatacenterRack(ToDictMixin, JsonMixin):
 
 
 class Switch(ToDictMixin, JsonMixin):
-    def __init__(self, switch=None):
-        self.switch = switch
+    def __init__(self, ports=None, speed=None):
+        self.ports = ports
+        self.speed = speed
 
 
 class Machine(ToDictMixin, JsonMixin):
-    def __init__(self, machine=None):
-        self.machine = machine
+    def __init__(self, cores=None, ram=None, disk=None):
+        self.cores = cores
+        self.ram = ram
+        self.disk = disk
 
 
 if __name__ == "__main__":
@@ -89,8 +92,8 @@ if __name__ == "__main__":
         "machines": [
             {"cores": 8, "ram": 32e9, "disk": 5e12},
             {"cores": 4, "ram": 16e9, "disk": 1e12},
-            {"cores": 2, "ram": 4e9, "disk": 500e9},
-        ]
+            {"cores": 2, "ram": 4e9,  "disk": 500e9},
+        ],
     }
     """
     deserialized = DatacenterRack.from_json(serialized)
